@@ -1,13 +1,23 @@
 <template>
   <div class="card">
-    <div class="gambar-placeholder">Gambar Produk</div>
+    <div class="gambar-placeholder">{{ produk.kategori }}</div>
+    
     <div class="info-produk">
-      <h4>Nama Produk</h4>
-      <p class="harga">Rp 50.000</p>
+      <h4>{{ produk.nama }}</h4>
+      <p class="harga">Rp {{ produk.harga.toLocaleString('id-ID') }}</p>
+      
+      <p class="stok-barang">Sisa stok: {{ produk.stok }}</p>
+      
       <button class="btn-beli">Beli Sekarang</button>
     </div>
   </div>
 </template>
+
+<script setup>
+defineProps({
+  produk: Object
+})
+</script>
 
 <style scoped>
 .card {
@@ -26,6 +36,7 @@
   align-items: center;
   justify-content: center;
   color: #7f8c8d;
+  font-size: 0.9rem;
 }
 .info-produk {
   padding: 15px;
@@ -37,6 +48,11 @@
 .harga {
   color: #e74c3c;
   font-weight: bold;
+  margin-bottom: 5px;
+}
+.stok-barang {
+  font-size: 0.85rem;
+  color: #7f8c8d;
   margin-bottom: 15px;
 }
 .btn-beli {
